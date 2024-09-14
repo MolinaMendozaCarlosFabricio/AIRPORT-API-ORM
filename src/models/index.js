@@ -14,4 +14,7 @@ const db = {};
 db.ORM = Sequelize;
 db.connection = sequelize;
 
+db.Countrys = require('./countrys')(sequelize, Sequelize);
+db.States = require('./states')(sequelize, Sequelize)
+
 module.exports = db;
