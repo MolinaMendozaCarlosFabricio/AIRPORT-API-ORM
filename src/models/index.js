@@ -14,7 +14,9 @@ const db = {};
 db.ORM = Sequelize;
 db.connection = sequelize;
 
-//Importar modelos
-db.User = require('./user.model')(sequelize,Sequelize);
+db.Countrys = require('./countrys')(sequelize, Sequelize);
+db.States = require('./states')(sequelize, Sequelize);
+db.Municipalitys = require('./municipalitys')(sequelize, Sequelize);
+db.Genders = require('./genders')(sequelize, Sequelize);
 
 module.exports = db;
