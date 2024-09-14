@@ -9,3 +9,9 @@ const sequelize = new Sequelize(
     dialect: config.development.dialect,
   }
 );
+
+const db = {};
+db.ORM = Sequelize;
+db.connection = sequelize;
+
+module.exports = db;
