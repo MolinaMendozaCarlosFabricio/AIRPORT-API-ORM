@@ -9,3 +9,12 @@ const sequelize = new Sequelize(
     dialect: config.development.dialect,
   }
 );
+
+const db = {};
+db.ORM = Sequelize;
+db.connection = sequelize;
+
+//Importar modelos
+db.User = require('./user.model')(sequelize,Sequelize);
+
+module.exports = db;
