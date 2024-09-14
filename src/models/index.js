@@ -15,6 +15,8 @@ db.ORM = Sequelize;
 db.connection = sequelize;
 
 db.Countrys = require('./countrys')(sequelize, Sequelize);
-db.States = require('./states')(sequelize, Sequelize)
+db.States = require('./states')(sequelize, Sequelize);
+db.Municipalitys = require('./municipalitys')(sequelize, Sequelize);
+db.Genders = require('./genders')(sequelize, Sequelize);
 
 module.exports = db;
