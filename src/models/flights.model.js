@@ -54,10 +54,6 @@ module.exports= (sequelize, DataTypes)=>{
         Flights.hasMany(models.Passengers, {
             foreignKey: 'id_flight'
         });
-
-        Flights.belongsTo(models.Ubications, {
-            foreignKey: 'id_ubication'
-        });
     };
 
     return Flights;

@@ -13,7 +13,7 @@ module.exports= (sequelize, DataTypes)=>{
                 key: 'id_type_seat' 
             }
         },
-        id_seat_status: {
+        id_seating_status: {
             type: DataTypes.INTEGER,
             allowNull: false,
             references: {
@@ -21,7 +21,7 @@ module.exports= (sequelize, DataTypes)=>{
                 key: 'id_seating_status' 
             }
         },
-        id_seating_place: {
+        id_seating_area: {
             type: DataTypes.INTEGER,
             allowNull: false,
             references: {

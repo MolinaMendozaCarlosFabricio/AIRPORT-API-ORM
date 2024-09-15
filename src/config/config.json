@@ -1,8 +1,8 @@
 {
     "development": {
       "username": "root",
-      "password": "amigoban",
-      "database": "airport2",
+      "password": "Chup3nm33lRif10t3",
+      "database": "airport_sistem_2",
       "host": "127.0.0.1",
       "dialect": "mysql"
     }

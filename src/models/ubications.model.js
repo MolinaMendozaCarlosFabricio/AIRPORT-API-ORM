@@ -19,7 +19,7 @@ module.exports = (sequelize, DataTypes) => {
                 key: 'id_countrys' 
             }
         },
-        state_id: {
+        id_states: {
             type: DataTypes.INTEGER,
             allowNull: false,
             references: {
