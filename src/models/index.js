@@ -16,26 +16,30 @@ db.connection = sequelize;
 
 // Importar modelos
 db.Users = require('./users.model')(sequelize, Sequelize);
-db.Passengers = require('./passengers.model')(sequelize, Sequelize);
-db.Ubications = require('./ubications.model')(sequelize, Sequelize); // Corregido
+db.Ubications = require('./ubications.model')(sequelize, Sequelize);
 db.Countrys = require('./countrys')(sequelize, Sequelize);
-db.States = require('./states')(sequelize, Sequelize);
+db.States = require('./states.model')(sequelize, Sequelize);
 db.Municipalitys = require('./municipalitys')(sequelize, Sequelize);
 db.Genders = require('./genders')(sequelize, Sequelize);
 db.TypeSeats = require('./typeseats.model')(sequelize, Sequelize);
-db.SeatingAreas = require('./seatingareas.model')(sequelize, Sequelize);
 db.Holders = require('./holders.model')(sequelize, Sequelize);
-db.Nationalitys = require('./nationalitys')(sequelize, Sequelize);
-db.SeatingStatus = require('./seatingStatus')(sequelize, Sequelize);
+db.Nationalitys = require('./nationalitys.model')(sequelize, Sequelize);
+db.ReservationStatus = require('./reservationstatus.model')(sequelize, Sequelize);
+db.Reservations = require('./reservations.model')(sequelize, Sequelize);
+db.Cards = require('./cards.model')(sequelize, Sequelize);
+db.CheckInStatus= require('./checkinstatus.model')(sequelize, Sequelize);
+db.Seating= require('./seating.model')(sequelize, Sequelize);
+db.SeatingStatus = require('./seatingstatus.model')(sequelize, Sequelize);
+db.SeatingAreas = require('./seatingareas.model')(sequelize, Sequelize);
+db.CheckIns= require('./checkins.model')(sequelize, Sequelize);
+db.Flights= require('./flights.model')(sequelize, Sequelize);
+db.Passengers = require('./passengers.model')(sequelize, Sequelize);
 
-db.Countrys.hasMany(db.Countrys, {
-  foreignKey: 'id_country',
-  targetKey: 'id_countrys'
-});
-
-db.Ubications.belongsTo(db.Countrys, {
-  foreignKey: 'id_country',
-  targetKey: 'id_countrys'
+// Configurar asociaciones
+Object.keys(db).forEach(modelName => {
+  if (db[modelName].associate) {
+      db[modelName].associate(db);
+  }
 });
 
 module.exports = db;

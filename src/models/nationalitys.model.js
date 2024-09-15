@@ -9,5 +9,12 @@ module.exports = (sequelize, DataTypes) => {
             type: DataTypes.STRING,
         }
     })
+
+    Nationalitys.associate = function(models) {
+        Nationalitys.hasMany(models.Passengers, {
+            foreignKey: 'id_nationality'
+        });
+    }
+
     return Nationalitys;
 }

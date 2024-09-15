@@ -1,5 +1,5 @@
 module.exports = (sequelize, DataTypes) => {
-    const SeatingAreas = ('SeatingAreas', {
+    const SeatingAreas = sequelize.define('SeatingAreas', {
         id_seating_area: {
             type: DataTypes.INTEGER,
             autoIncrement: true,
@@ -10,6 +10,12 @@ module.exports = (sequelize, DataTypes) => {
             allowNull: false
         }
     });
+
+    SeatingAreas.associate = function(models) {
+        SeatingAreas.hasMany(models.Seating, {
+            foreignKey: 'id_seating_area'
+        });
+    };
 
     return SeatingAreas;
 }

@@ -11,5 +11,11 @@ module.exports = (sequelize,DataTypes) => {
         }
     });
 
+    TypeSeats.associate = function(models) {
+        TypeSeats.hasMany(models.Seating, {
+            foreignKey: 'id_type_seat'
+        });
+    }
+
     return TypeSeats;
 };

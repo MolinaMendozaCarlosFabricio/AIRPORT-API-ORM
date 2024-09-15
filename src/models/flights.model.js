@@ -1,10 +1,8 @@
 module.exports= (sequelize, DataTypes)=>{
     const Flights = sequelize.define('Flights',{
-        
-        id_flights:{
+        id_flight:{
             type: DataTypes.INTEGER,
             primaryKey:true,
-            allowNull: false,
             autoIncrement: true
         },
         price_flight:{
@@ -21,10 +19,18 @@ module.exports= (sequelize, DataTypes)=>{
         },
         depature_time:{
             type: DataTypes.TIME,
-        },
-        depature_date:{
-            type: DataTypes.DATEONLY,
-        },
+        }
     });
-    return CheckIns;
+
+    Flights.associate = function(models) {
+        Flights.hasMany(models.Reservation, {
+            foreignKey: 'id_flight'
+        });
+
+        Flights.hasMany(models.Passengers, {
+            foreignKey: 'id_flight'
+        });
+    };
+
+    return Flights;
 };
