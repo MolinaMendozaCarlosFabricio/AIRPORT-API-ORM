@@ -25,14 +25,14 @@ db.TypeSeats = require('./typeseats.model')(sequelize, Sequelize);
 db.Holders = require('./holders.model')(sequelize, Sequelize);
 db.Nationalitys = require('./nationalitys.model')(sequelize, Sequelize);
 db.ReservationStatus = require('./reservationstatus.model')(sequelize, Sequelize);
-db.Reservations = require('./reservations.model')(sequelize, Sequelize);
+db.Reservation = require('./reservations.model')(sequelize, Sequelize);
 db.Cards = require('./cards.model')(sequelize, Sequelize);
 db.CheckInStatus= require('./checkinstatus.model')(sequelize, Sequelize);
 db.Seating= require('./seating.model')(sequelize, Sequelize);
 db.SeatingStatus = require('./seatingstatus.model')(sequelize, Sequelize);
 db.SeatingAreas = require('./seatingareas.model')(sequelize, Sequelize);
 db.CheckIns= require('./checkins.model')(sequelize, Sequelize);
-db.Flights= require('./flights.model')(sequelize, Sequelize);
+db.Flights= require('./flights.model')(sequelize, Sequelize);
 db.Passengers = require('./passengers.model')(sequelize, Sequelize);
 
 // Configurar asociaciones

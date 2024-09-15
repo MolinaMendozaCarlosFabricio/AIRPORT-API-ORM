@@ -25,7 +25,7 @@ module.exports = (sequelize,DataTypes) => {
 
     Holders.associate = function(models) {
         Holders.hasMany(models.Cards, {
-            foreignKey: 'holder_id'
+            foreignKey: 'id_holder'
         });
     }
 

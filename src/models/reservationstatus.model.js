@@ -12,7 +12,7 @@ module.exports = (sequelize, DataTypes) => {
     });
 
     ReservationStatus.associate = function(models) {
-        ReservationStatus.hasMany(models.Reservations, {
+        ReservationStatus.hasMany(models.Reservation, {
             foreignKey: 'id_reservation_status'
         });
     };

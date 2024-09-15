@@ -33,7 +33,7 @@ module.exports = (sequelize, DataTypes) => {
     });
 
     Users.associate = function(models) {
-        Users.hasMany(models.Reservations, {
+        Users.hasMany(models.Reservation, {
             foreignKey: 'id_user'
         });
 

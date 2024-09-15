@@ -42,7 +42,7 @@ module.exports = (sequelize, DataTypes) =>{
         });
 
         Cards.belongsTo(models.Holders, {
-            foreignKey: 'holder_id'
+            foreignKey: 'id_holder'
         });
     }
     
