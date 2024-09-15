@@ -6,7 +6,7 @@ module.exports = (sequelize, DataTypes) => {
             autoIncrement: true,
         },
         country_name: {
-            type: DataTypes.String,
+            type: DataTypes.STRING,
         }
     })
     return Countrys;

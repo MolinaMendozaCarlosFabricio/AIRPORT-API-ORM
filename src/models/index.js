@@ -17,7 +17,7 @@ db.connection = sequelize;
 // Importar modelos
 db.Users = require('./users.model')(sequelize, Sequelize);
 db.Passengers = require('./passengers.model')(sequelize, Sequelize);
-db.Ubications = require('./ubications.model')
+db.Ubications = require('./ubications.model')(sequelize, Sequelize); // Corregido
 db.Countrys = require('./countrys')(sequelize, Sequelize);
 db.States = require('./states')(sequelize, Sequelize);
 db.Municipalitys = require('./municipalitys')(sequelize, Sequelize);
@@ -26,6 +26,16 @@ db.TypeSeats = require('./typeseats.model')(sequelize, Sequelize);
 db.SeatingAreas = require('./seatingareas.model')(sequelize, Sequelize);
 db.Holders = require('./holders.model')(sequelize, Sequelize);
 db.Nationalitys = require('./nationalitys')(sequelize, Sequelize);
-db.SeatingStatus= require('./seatingStatus')(sequelize, Sequelize);
+db.SeatingStatus = require('./seatingStatus')(sequelize, Sequelize);
+
+db.Countrys.hasMany(db.Countrys, {
+  foreignKey: 'id_country',
+  targetKey: 'id_countrys'
+});
+
+db.Ubications.belongsTo(db.Countrys, {
+  foreignKey: 'id_country',
+  targetKey: 'id_countrys'
+});
 
 module.exports = db;
