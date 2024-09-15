@@ -22,5 +22,10 @@ db.Countrys = require('./countrys')(sequelize, Sequelize);
 db.States = require('./states')(sequelize, Sequelize);
 db.Municipalitys = require('./municipalitys')(sequelize, Sequelize);
 db.Genders = require('./genders')(sequelize, Sequelize);
+db.TypeSeats = require('./typeseats.model')(sequelize, Sequelize);
+db.SeatingAreas = require('./seatingareas.model')(sequelize, Sequelize);
+db.Holders = require('./holders.model')(sequelize, Sequelize);
+db.Nationalitys = require('./nationalitys')(sequelize, Sequelize);
+db.SeatingStatus= require('./seatingStatus')(sequelize, Sequelize);
 
 module.exports = db;
