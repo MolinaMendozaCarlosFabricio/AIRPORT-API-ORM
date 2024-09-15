@@ -21,7 +21,7 @@ module.exports = (sequelize,DataTypes) => {
             type: DataTypes.STRING,
             allowNull: false
         },
-    });
+    },{ timestamps: false },);
 
     Holders.associate = function(models) {
         Holders.hasMany(models.Cards, {

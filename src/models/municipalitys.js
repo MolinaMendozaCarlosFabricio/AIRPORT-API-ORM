@@ -1,6 +1,6 @@
 module.exports = (sequelize, DataTypes) => {
     const Municipalitys = sequelize.define('Municipalitys', {
-        id_municipalitys: {
+        id_municipality: {
             type: DataTypes.INTEGER,
             primaryKey: true,
             autoIncrement: true,
@@ -8,6 +8,13 @@ module.exports = (sequelize, DataTypes) => {
         municipalitys_name: {
             type: DataTypes.STRING,
         }
-    })
+    },{ timestamps: false });
+
+    Municipalitys.associate = function(models) {
+        Municipalitys.hasMany(models.Ubications, {
+            foreignKey: 'id_municipality'
+        })
+    }
+
     return Municipalitys;
 }

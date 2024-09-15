@@ -33,8 +33,8 @@ module.exports = (sequelize, DataTypes) =>{
                 model: 'Users',
                 key: 'id_user'
             }
-        }
-    });
+        },
+    },{ timestamps: false },);
 
     Cards.associate = function(models) {
         Cards.belongsTo(models.Users, {

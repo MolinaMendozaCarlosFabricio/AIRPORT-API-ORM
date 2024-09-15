@@ -13,7 +13,7 @@ module.exports = (sequelize, DataTypes) => {
                 key: 'id_checkIn_status' 
             }
         }
-    });
+    },{ timestamps: false },);
 
     CheckIns.associate = function(models) {
         CheckIns.hasMany(models.Passengers, {

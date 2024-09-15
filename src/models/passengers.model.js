@@ -72,7 +72,7 @@ module.exports = (sequelize, DataTypes) => {
             }
         }
 
-    });
+    },{ timestamps: false },);
 
     Passengers.associate = function(models) {
         Passengers.belongsTo(models.Flights, {

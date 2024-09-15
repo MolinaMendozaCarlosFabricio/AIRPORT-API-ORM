@@ -29,7 +29,7 @@ module.exports= (sequelize, DataTypes)=>{
                 key: 'id_seating_area' 
             }
         }
-    });
+    },{ timestamps: false },);
 
     Seating.associate = function(models) {
         Seating.belongsTo(models.TypeSeats, {

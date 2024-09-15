@@ -35,9 +35,15 @@ const getFlightsByOriginAndDestination =  async (req, res) => {
                   where: { municipality_name: destination }
                 }
               }
-            ]})
+            ]});
+
+        return res.status(200).json({
+            ok: true,
+            flights
+        })
+            
     }catch(error){
-        res.status(200).send.json({ error: error.message });
+        res.status(200).json({ error: error.message });
     }
 }
 

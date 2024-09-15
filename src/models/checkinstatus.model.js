@@ -8,7 +8,7 @@ module.exports = (sequelize, DataTypes) => {
         name_status_checkin: {
             type: DataTypes.STRING,
         }
-    });
+    },{ timestamps: false },);
 
     CheckInStatus.associate = function(models) {
         CheckInStatus.hasMany(models.CheckIns, {

@@ -33,7 +33,7 @@ module.exports = (sequelize, DataTypes) => {
                 key: 'id_user'
             }
         }
-    });
+    },{ timestamps: false },);
 
     Reservation.associate = function(models) {
         Reservation.belongsTo(models.Flights, {

@@ -6,7 +6,7 @@ module.exports= (sequelize, DataTypes)=>{
             autoIncrement: true
         },
         price_flight:{
-            type: DataTypes.DECIMAL,
+            type: DataTypes.DECIMAL(10,2),
         },
         arrival_date:{
             type: DataTypes.DATEONLY,
@@ -19,16 +19,44 @@ module.exports= (sequelize, DataTypes)=>{
         },
         depature_time:{
             type: DataTypes.TIME,
+        },
+        id_origin: {
+            type: DataTypes.INTEGER,
+            allowNull: false,
+            references: {
+                model: 'Ubications',
+                key: 'id_ubication'
+            }
+        },
+        id_destination: {
+            type: DataTypes.INTEGER,
+            allowNull: false,
+            references: {
+                model: 'Ubications',
+                key: 'id_ubication'
+            }
         }
-    });
+    },{ timestamps: false },);
 
     Flights.associate = function(models) {
+        Flights.belongsTo(models.Ubications, {
+            foreignKey: 'id_origin'
+        });
+        
+        Flights.belongsTo(models.Ubications, {
+            foreignKey: 'id_destination'
+        });
+
         Flights.hasMany(models.Reservation, {
             foreignKey: 'id_flight'
         });
 
         Flights.hasMany(models.Passengers, {
             foreignKey: 'id_flight'
+        });
+
+        Flights.belongsTo(models.Ubications, {
+            foreignKey: 'id_ubication'
         });
     };
 

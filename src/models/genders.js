@@ -8,7 +8,7 @@ module.exports = (sequelize, DataTypes) => {
         genres_name: {
             type: DataTypes.STRING,
         }
-    });
+    },{ timestamps: false },);
 
     Genders.associate = function(models) {
         Genders.hasMany(models.Passengers, {

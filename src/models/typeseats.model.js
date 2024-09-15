@@ -9,7 +9,7 @@ module.exports = (sequelize,DataTypes) => {
             type: DataTypes.STRING,
             allowNull: false
         }
-    });
+    },{ timestamps: false },);
 
     TypeSeats.associate = function(models) {
         TypeSeats.hasMany(models.Seating, {

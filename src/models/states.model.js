@@ -8,11 +8,11 @@ module.exports = (sequelize, DataTypes) => {
         states_name: {
             type: DataTypes.STRING,
         }
-    });
+    },{ timestamps: false },);
 
     States.associate = function(models) {
-        States.hasMany(models.States, {
-            foreignKey: 'state_id'
+        States.hasMany(models.Ubications, {
+            foreignKey: 'id_states'
         });
     }
 

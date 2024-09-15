@@ -8,7 +8,7 @@ module.exports = (sequelize, DataTypes) => {
         seating_status_name: {
             type: DataTypes.STRING,
         }
-    });
+    },{ timestamps: false },);
 
     SeatingStatus.associate = function(models) {
         SeatingStatus.hasMany(models.Seating, {
