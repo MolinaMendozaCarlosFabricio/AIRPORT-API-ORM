@@ -8,6 +8,13 @@ module.exports = (sequelize, DataTypes) => {
         states_name: {
             type: DataTypes.STRING,
         }
-    })
+    });
+
+    States.associate = function(models) {
+        States.hasMany(models.States, {
+            foreignKey: 'state_id'
+        });
+    }
+
     return States;
 }

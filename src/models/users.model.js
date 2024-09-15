@@ -32,5 +32,15 @@ module.exports = (sequelize, DataTypes) => {
         }
     });
 
+    Users.associate = function(models) {
+        Users.hasMany(models.Reservation, {
+            foreignKey: 'id_user'
+        });
+
+        Users.hasMany(models.Cards, {
+            foreignKey: 'id_user'
+        });
+    }
+
     return Users;
 };

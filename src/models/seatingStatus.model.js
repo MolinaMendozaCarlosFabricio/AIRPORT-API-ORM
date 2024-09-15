@@ -8,6 +8,13 @@ module.exports = (sequelize, DataTypes) => {
         seating_status_name: {
             type: DataTypes.STRING,
         }
-    })
+    });
+
+    SeatingStatus.associate = function(models) {
+        SeatingStatus.hasMany(models.Seating, {
+            foreignKey: 'id_seating_status'
+        });
+    };
+
     return SeatingStatus;
 }

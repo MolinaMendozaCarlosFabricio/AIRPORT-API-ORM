@@ -1,17 +1,20 @@
-module.exports= (sequelize, DataTypes)=>{
-    const CheckInStatus = sequelize.define('CheckInStatus',{
-        
-        id_checkIn_status:{
+module.exports = (sequelize, DataTypes) => {
+    const CheckInStatus = sequelize.define('CheckInStatus', {
+        id_checkIn_status: {
             type: DataTypes.INTEGER,
-            primaryKey:true,
-            allowNull: false,
+            primaryKey: true,
             autoIncrement: true
         },
-        
-        name_status_checkin:{
+        name_status_checkin: {
             type: DataTypes.STRING,
-        },
-
+        }
     });
+
+    CheckInStatus.associate = function(models) {
+        CheckInStatus.hasMany(models.CheckIns, {
+            foreignKey: 'id_check_status'
+        });
+    }
+
     return CheckInStatus;
 };

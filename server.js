@@ -1,6 +1,6 @@
 const http = require('http');
-const app = require('./app');
-const {connection} = require('./models');
+const app = require('./src/app');
+const {connection} = require('./src/models');
 
 const PORT = 3000;
 connection.sync() // Sincroniza los modelos con la base de datos
