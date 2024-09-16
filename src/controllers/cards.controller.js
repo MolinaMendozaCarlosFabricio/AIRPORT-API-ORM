@@ -10,22 +10,14 @@ const addHolder = async (req, res) => {
 };
 
 const addCard = async (req, res) => {
-  try {
-    const { card_number, due_date, bank, id_holder, id_user } = req.body;
 
-    await Cards.create({
-      card_number,
-      due_date,
-      bank,
-      id_holder,
-      id_user,
-    });
-
-    res.status(201).json({ message: "tarjeta añadidad correcatamente" });
-  } catch (error) {
-    res.status(500).json({ error: "error al añadir una tarjeta" });
-  }
-};
+    try {
+        const newCard = await Cards.create(req.body);
+        res.status(201).json({ message: "tarjeta añadidad correcatamente" });
+      } catch (error) {
+        res.status(500).json({ error: "error al añadir una tarjeta" });
+      }
+    };
 
 const searchCard = async (req, res) => {
   try {
