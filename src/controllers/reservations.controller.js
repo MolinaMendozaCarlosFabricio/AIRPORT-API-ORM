@@ -21,7 +21,7 @@ const reserveFlight = async (req, res) => {
     const userId = req.params.id;
 
     try {
-        await reservation.create({
+        const reservation = await Reservation.create({
             id_flight,
             id_reservation_status,
             id_usuario: userId,
