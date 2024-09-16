@@ -1,4 +1,4 @@
-const { Flights } = require('../models');
+const { Flights, Ubications, Municipalitys } = require('../models');
 
 const registerFly = async (req, res) => {
   try{
@@ -12,6 +12,7 @@ const registerFly = async (req, res) => {
 const getFlightsByOriginAndDestination =  async (req, res) => {
     try{
         const { origin, destination } = req.body;
+        console.log(origin, destination)
         const flights = await Flights.findAll({
             attributes: [
               'price_flight',
@@ -22,36 +23,37 @@ const getFlightsByOriginAndDestination =  async (req, res) => {
             ],
             include: [
               {
-                model: Ubication,
+                model: Ubications,
                 as: 'origin',
-                attributes: ['airport'],
+                attributes: ['airport_name_ubication'],
                 include: {
-                  model: Municipality,
+                  model: Municipalitys,
                   as: 'municipality',
-                  attributes: ['municipality_name'],
-                  where: { municipality_name: origin }
+                  attributes: ['municipalitys_name'],
+                  where: { municipalitys_name: origin }
                 }
               },
               {
-                model: Ubication,
+                model: Ubications,
                 as: 'destination',
-                attributes: ['airport'],
+                attributes: ['airport_name_ubication'],
                 include: {
-                  model: Municipality,
+                  model: Municipalitys,
                   as: 'municipality',
-                  attributes: ['municipality_name'],
-                  where: { municipality_name: destination }
+                  attributes: ['municipalitys_name'],
+                  where: { municipalitys_name: destination }
                 }
               }
             ]});
 
-        return res.status(200).json({
+        res.status(200).json({
             ok: true,
             flights
         })
             
     }catch(error){
-        res.status(200).json({ error: error.message });
+      console.log(error)
+      res.status(500).json({ error: error.message });
     }
 }
 
@@ -59,16 +61,3 @@ module.exports = {
     getFlightsByOriginAndDestination,
     registerFly
 }
-
-// exports.knowReservationStatus = (req,res) => {
-//     const{numberReservation,nameUser,date} = req.body;
-  
-//     db.query('SELECT reser.reservation_number,reserst.status,users.first_name,users.first_surname,users.middle_surname FROM reservations reser INNER JOIN reservationstatus reserst ON reserst.id_reservation_status = reser.id_reservation_status INNER JOIN users users ON reser.id_user = users.id_user WHERE reser.reservation_number = ? OR (users.first_name = ? AND reser.reservation_date = ?)',[numberReservation,nameUser,date],(err,result)=>{
-//       if(err){
-//         console.log(err)
-//         return res.status(500).send("Error al consultar el estado de dicha reserva");
-//       }
-  
-//       res.json(result);
-//     })
-//   } 
