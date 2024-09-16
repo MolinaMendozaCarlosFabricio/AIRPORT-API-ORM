@@ -1,5 +1,13 @@
 const { Flights } = require('../models');
 
+const registerFly = async (req, res) => {
+  try{
+    const newFligth = await Flights.create(req.body);
+    res.status(201).json({message: "Vuelo registrado correctamente"})
+  }catch(error){
+    res.status(500).json(error)
+  }
+}
 // Controlador para buscar vuelos por origen y destino
 const getFlightsByOriginAndDestination =  async (req, res) => {
     try{
@@ -48,7 +56,8 @@ const getFlightsByOriginAndDestination =  async (req, res) => {
 }
 
 module.exports = {
-    getFlightsByOriginAndDestination
+    getFlightsByOriginAndDestination,
+    registerFly
 }
 
 // exports.knowReservationStatus = (req,res) => {
