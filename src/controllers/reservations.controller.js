@@ -39,29 +39,29 @@ const reserveFlight = async (req, res) => {
     }
 };
 
-const getStatusReservation = async (req, res) => {
-    try {
-        const reservationId = req.params.id;
-        const reservation = await Reservation.findOne({
-            where: { reservation_number: reservationId },
-            include: [{
-                model: ReservationStatus,
-                attributes: ['status_name'] // obtne el estatus
-            }]
-        });
+// const getStatusReservation = async (req, res) => {
+//     try {
+//         const reservationId = req.params.id;
+//         const reservation = await Reservation.findOne({
+//             where: { reservation_number: reservationId },
+//             include: [{
+//                 model: ReservationStatus,
+//                 attributes: ['status_name'] // obtne el estatus
+//             }]
+//         });
 
-        if (reservation === null) {
-            return res.status(404).json({ message: 'Reserva no encontrada' });
-        }
+//         if (reservation === null) {
+//             return res.status(404).json({ message: 'Reserva no encontrada' });
+//         }
 
-        //lo devuelve 
-        res.status(200).json({
-            reservationStatus: reservation.ReservationStatus.status_name
-        });
-    } catch (error) {
-        res.status(500).json({ error: 'error al obtener el estado de la reserva' });
-    }
-};
+//         //lo devuelve 
+//         res.status(200).json({
+//             reservationStatus: reservation.ReservationStatus.status_name
+//         });
+//     } catch (error) {
+//         res.status(500).json({ error: 'error al obtener el estado de la reserva' });
+//     }
+// };
 
 const selectSeat = async (req, res) => {
     const { seat_number } = req.body; // para enviar en el bidy
@@ -142,7 +142,7 @@ const knowReservationStatus = async (req, res) => {
 module.exports = {
     cancelReservation,
     reserveFlight,
-    getStatusReservation,
+    // getStatusReservation,
     selectSeat,
     knowReservationStatus
 }
