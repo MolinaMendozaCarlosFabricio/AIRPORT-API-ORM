@@ -1,5 +1,3 @@
-const { type } = require("os");
-
 module.exports = (sequelize, DataTypes) => {
     const Ubications = sequelize.define('Ubications', {
         id_ubication: {
@@ -16,7 +14,7 @@ module.exports = (sequelize, DataTypes) => {
             allowNull: false,
             references: {
                 model: 'Countrys',
-                key: 'id_countrys' 
+                key: 'id_countrys'
             }
         },
         id_states: {
@@ -35,7 +33,7 @@ module.exports = (sequelize, DataTypes) => {
                 key: 'id_municipality'
             }
         }
-    },{ timestamps: false },);
+    }, { timestamps: false });
 
     Ubications.associate = function(models) {
         Ubications.belongsTo(models.Countrys, {
@@ -45,12 +43,15 @@ module.exports = (sequelize, DataTypes) => {
             foreignKey: 'id_states'
         });
         Ubications.belongsTo(models.Municipalitys, {
+            as: 'municipality',
             foreignKey: 'id_municipality'
         });
         Ubications.hasMany(models.Flights, {
+            as: 'originFlights',
             foreignKey: 'id_origin'
         });
         Ubications.hasMany(models.Flights, {
+            as: 'destinationFlights', 
             foreignKey: 'id_destination'
         });
     };

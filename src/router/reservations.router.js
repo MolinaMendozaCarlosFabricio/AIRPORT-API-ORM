@@ -4,4 +4,6 @@ const reservationsController = require('../controllers/reservations.controller')
 
 router.put('/cancelReservation/:id', reservationsController.cancelReservation);
 
+router.get('/knowStatusReservation', reservationsController.knowReservationStatus);
+
 module.exports = router;

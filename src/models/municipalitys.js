@@ -8,13 +8,13 @@ module.exports = (sequelize, DataTypes) => {
         municipalitys_name: {
             type: DataTypes.STRING,
         }
-    },{ timestamps: false });
+    }, { timestamps: false });
 
     Municipalitys.associate = function(models) {
         Municipalitys.hasMany(models.Ubications, {
             foreignKey: 'id_municipality'
-        })
-    }
+        });
+    };
 
     return Municipalitys;
-}
+};

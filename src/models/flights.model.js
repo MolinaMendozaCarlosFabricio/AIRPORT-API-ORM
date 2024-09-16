@@ -1,23 +1,23 @@
-module.exports= (sequelize, DataTypes)=>{
-    const Flights = sequelize.define('Flights',{
-        id_flight:{
+module.exports = (sequelize, DataTypes) => {
+    const Flights = sequelize.define('Flights', {
+        id_flight: {
             type: DataTypes.INTEGER,
-            primaryKey:true,
+            primaryKey: true,
             autoIncrement: true
         },
-        price_flight:{
-            type: DataTypes.DECIMAL(10,2),
+        price_flight: {
+            type: DataTypes.DECIMAL(10, 2),
         },
-        arrival_date:{
+        arrival_date: {
             type: DataTypes.DATEONLY,
         },
-        arrival_time:{
-            type: DataTypes.TIME,   
+        arrival_time: {
+            type: DataTypes.TIME,
         },
-        depature_date:{
+        depature_date: {
             type: DataTypes.DATEONLY,
         },
-        depature_time:{
+        depature_time: {
             type: DataTypes.TIME,
         },
         id_origin: {
@@ -36,14 +36,16 @@ module.exports= (sequelize, DataTypes)=>{
                 key: 'id_ubication'
             }
         }
-    },{ timestamps: false },);
+    }, { timestamps: false });
 
     Flights.associate = function(models) {
         Flights.belongsTo(models.Ubications, {
+            as: 'origin',
             foreignKey: 'id_origin'
         });
         
         Flights.belongsTo(models.Ubications, {
+            as: 'destination',
             foreignKey: 'id_destination'
         });
 
